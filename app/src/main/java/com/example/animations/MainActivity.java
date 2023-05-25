@@ -9,22 +9,12 @@ import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
-    boolean bartIsShowing = true;
     public void fade(View view){
 
         ImageView bartImageView = (ImageView) findViewById(R.id.bartImageView);
         ImageView homerImageView = (ImageView) findViewById(R.id.homerImageView);
-        if (bartIsShowing) {
-            Log.i("Info", "showing homer");
-            bartIsShowing = false;
-            bartImageView.animate().alpha(0).setDuration(2000);
-            homerImageView.animate().alpha(1).setDuration(2000);
-        } else {
-            Log.i("Info", "showing bart");
-            bartIsShowing = true;
-            bartImageView.animate().alpha(1).setDuration(2000);
-            homerImageView.animate().alpha(0).setDuration(2000);
-        }
+
+        bartImageView.animate().translationXBy(-1200).setDuration(2000);
 
     }
 
@@ -32,5 +22,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ImageView bartImageView = (ImageView) findViewById(R.id.bartImageView);
+        bartImageView.setX(-1000);
+        bartImageView.animate().translationXBy(1000).rotation(3600).setDuration(2000);
     }
 }
